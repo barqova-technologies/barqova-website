@@ -7,7 +7,7 @@ export const siteConfig = {
   phone: "+918052911911",
   phoneDisplay: "+91 8052 911 911",
   url: "https://barqova.com",
-  ogImage: "https://barqova.com/images/og-image.jpg",
+  ogImage: "https://barqova.com/og-image.jpg",
   description:
     "We build fast, scalable web apps and mobile apps using React, Next.js, Node.js and React Native. A product-focused technology company for startups and businesses.",
   keywords: [
