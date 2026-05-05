@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteConfig = {
   name: "Barqova Technologies",
-  tagline: "We Build Products That Scale",
+  tagline: "Powered by Lightning, Built for Scale",
   email: "contact@barqova.com",
   phone: "+918052911911",
   phoneDisplay: "+91 8052 911 911",

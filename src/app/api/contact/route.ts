@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 type Payload = {
@@ -13,13 +13,10 @@ type Payload = {
   company_website?: string;
 };
 
-const TO = process.env.CONTACT_TO_EMAIL ?? "contact@barqova.com";
-const FROM = process.env.CONTACT_FROM_EMAIL ?? process.env.SMTP_USER ?? "";
-const SMTP_HOST = process.env.SMTP_HOST ?? "smtp.gmail.com";
-const SMTP_PORT = Number(process.env.SMTP_PORT ?? 465);
-const SMTP_SECURE = (process.env.SMTP_SECURE ?? "true") === "true";
-const SMTP_USER = process.env.SMTP_USER;
-const SMTP_PASS = process.env.SMTP_PASS;
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const TO = "contact@barqova.com";
+const FROM = "Barqova Technologies <noreply@barqova.com>";
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -42,6 +39,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
+  // Honeypot check
   if (body.company_website && body.company_website.length > 0) {
     return NextResponse.json({ ok: true });
   }
@@ -71,17 +69,21 @@ export async function POST(req: Request) {
   }
 
   const subject = `New enquiry from ${name} — ${service}`;
+
   const html = `
-    <div style="font-family:Inter,system-ui,sans-serif;color:#0F172A">
+    <div style="font-family:Inter,system-ui,sans-serif;color:#0F172A;max-width:600px;margin:0 auto">
       <h2 style="color:#D5AD36;margin:0 0 16px">New enquiry from the website</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Phone:</strong> ${escapeHtml(phone || "—")}</p>
       <p><strong>Service:</strong> ${escapeHtml(service)}</p>
       <p style="margin-top:16px"><strong>Message:</strong></p>
-      <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
+      <p style="white-space:pre-wrap;background:#F8FAFC;padding:12px;border-radius:8px;border:1px solid #E2E8F0">${escapeHtml(message)}</p>
+      <hr style="border:none;border-top:1px solid #E2E8F0;margin:24px 0" />
+      <p style="font-size:12px;color:#94A3B8">Sent via barqova.com contact form</p>
     </div>
   `;
+
   const text = [
     `New enquiry from the website`,
     ``,
@@ -94,34 +96,19 @@ export async function POST(req: Request) {
     message,
   ].join("\n");
 
-  if (!SMTP_USER || !SMTP_PASS) {
-    console.info(
-      "[contact] SMTP_USER / SMTP_PASS not set — submission received but not sent:",
-      { name, email, phone, service, message },
-    );
-    return NextResponse.json({ ok: true });
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: SMTP_PORT,
-    secure: SMTP_SECURE,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
+  const { error } = await resend.emails.send({
+    from: FROM,
+    to: [TO],
+    replyTo: email,
+    subject,
+    html,
+    text,
   });
 
-  try {
-    await transporter.sendMail({
-      from: FROM || SMTP_USER,
-      to: TO,
-      replyTo: email,
-      subject,
-      text,
-      html,
-    });
-  } catch (err) {
-    console.error("Contact route SMTP error:", err);
+  if (error) {
+    console.error("[contact] Resend error:", error);
     return NextResponse.json(
-      { error: "Could not send right now. Please email us instead." },
+      { error: "Could not send right now. Please email us at contact@barqova.com." },
       { status: 502 },
     );
   }
