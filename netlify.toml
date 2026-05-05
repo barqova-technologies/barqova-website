@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Env vars to set in Netlify dashboard (Site → Settings → Environment):
+#   SMTP_HOST            e.g. smtp.gmail.com
+#   SMTP_PORT            e.g. 465
+#   SMTP_SECURE          "true" for 465, "false" for 587
+#   SMTP_USER            SMTP username (full email)
+#   SMTP_PASS            SMTP password / app password
+#   CONTACT_TO_EMAIL     where enquiries are delivered
+#   CONTACT_FROM_EMAIL   "Barqova <noreply@barqova.com>" (defaults to SMTP_USER)
