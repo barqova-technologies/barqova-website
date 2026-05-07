@@ -13,8 +13,6 @@ type Payload = {
   company_website?: string;
 };
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TO = "contact@barqova.com";
 const FROM = "Barqova Technologies <noreply@barqova.com>";
 
@@ -96,6 +94,16 @@ export async function POST(req: Request) {
     message,
   ].join("\n");
 
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("[contact] RESEND_API_KEY is not set");
+    return NextResponse.json(
+      { error: "Email service is not configured. Please email us at contact@barqova.com." },
+      { status: 500 },
+    );
+  }
+
+  const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
     from: FROM,
     to: [TO],

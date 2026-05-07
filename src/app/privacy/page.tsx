@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
+import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy | Barqova Technologies",
@@ -10,6 +11,12 @@ export const metadata: Metadata = buildMetadata({
 export default function PrivacyPage() {
   return (
     <section className="bg-app py-20 sm:py-24">
+      <BreadcrumbsJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" },
+        ]}
+      />
       <div className="container-page max-w-3xl">
         <h1 className="text-3xl sm:text-4xl font-bold text-app">Privacy Policy</h1>
         <p className="mt-4 text-sm text-muted-app">Last updated: 4 May 2026</p>

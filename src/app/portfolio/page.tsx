@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
+import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
 import type { Project } from "@/types";
 
 export const metadata: Metadata = buildMetadata({
@@ -44,6 +45,12 @@ const PROJECTS: Array<Project & { image: string; badge?: string }> = [
 export default function PortfolioPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Portfolio", path: "/portfolio" },
+        ]}
+      />
       <section className="bg-[#0F172A] text-white pt-20 pb-20 sm:pt-28 sm:pb-24">
         <div className="container-page text-center">
           <span className="inline-block rounded-full border border-[#D5AD36]/40 bg-[#D5AD36]/10 px-3 py-1 text-xs font-medium tracking-widest text-[#E7C358] uppercase">

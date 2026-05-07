@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { MessageCircle, Mail, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us | Barqova Technologies",
@@ -13,6 +15,12 @@ export const metadata: Metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
+      />
       <section className="bg-[#0F172A] text-white pt-20 pb-20 sm:pt-28 sm:pb-24">
         <div className="container-page text-center">
           <span className="inline-block rounded-full border border-[#D5AD36]/40 bg-[#D5AD36]/10 px-3 py-1 text-xs font-medium tracking-widest text-[#E7C358] uppercase">
@@ -48,7 +56,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1FB358]"
                 >
-                  <MessageCircle className="h-4 w-4" />
+                  <WhatsAppIcon className="h-5 w-5" />
                   Chat on WhatsApp
                 </a>
                 <p className="mt-3 text-center text-xs text-muted-app">

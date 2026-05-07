@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { TeamSection } from "@/components/about/TeamSection";
 import { ValuesSection } from "@/components/about/ValuesSection";
+import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us | Barqova Technologies",
@@ -15,6 +16,12 @@ export const metadata: Metadata = buildMetadata({
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]}
+      />
       <section className="bg-[#0F172A] text-white pt-20 pb-24 sm:pt-28 sm:pb-32">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">

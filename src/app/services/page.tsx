@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { Tag } from "@/components/ui/Tag";
 import { HowWeBuild } from "@/components/services/HowWeBuild";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
+import { BreadcrumbsJsonLd, ServicesJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
   title:
@@ -38,6 +39,13 @@ const WEB_FOR = [
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ]}
+      />
+      <ServicesJsonLd />
       {/* Page hero */}
       <section className="bg-[#0F172A] text-white pt-20 pb-24 sm:pt-28 sm:pb-32">
         <div className="container-page text-center">
