@@ -1,7 +1,9 @@
 # Barqova Technologies — Marketing Website
 
 Marketing site for **Barqova Technologies**, a web and mobile app development
-company. Built with Next.js 16 (App Router), React 19, Tailwind CSS v4 and GSAP
+company. Built with Next.js 16 (App Router), React 19, Tailwind CSS v4 and GSAP.
+
+**Live site:** [barqova.com](https://barqova.com)
 
 Pages: home, services, portfolio, about, contact, plus the standard
 `privacy` / `terms` / `sitemap.xml` / `robots.txt` / `opengraph-image`.
