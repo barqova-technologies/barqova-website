@@ -23,14 +23,14 @@ const TEAM: TeamMember[] = [
     initials: "SM",
     role: "Co-Founder & CEO",
     bio: "Leads client partnerships and business growth. Deep expertise in business development and event management. The reason clients trust us from day one.",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/sahilmuhib",
   },
   {
     name: "Mohd Atif Khan",
     initials: "MAK",
     role: "Co-Founder & COO",
     bio: "Drives operations, marketing, and brand growth. Background in team leadership and business management. The reason things run smoothly behind the scenes.",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/mohdatifkhan21",
   },
 ];
 
