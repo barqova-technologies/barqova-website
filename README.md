@@ -14,4 +14,5 @@ Pages: home, services, portfolio, about, contact, plus the standard
 - Tailwind CSS v4 with custom `@theme` tokens and a fluid container
 - GSAP 3 + ScrollTrigger for scroll-driven animations (lazy-loaded)
 - `@next/third-parties` for Google Analytics
+- Resend for Email
 
