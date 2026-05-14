@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           </p>
           <h2 className="text-xl font-semibold mt-8">Contact</h2>
           <p>
-            For any privacy-related questions, email <a className="text-[#D5AD36] hover:underline" href="mailto:contact@barqova.com">contact@barqova.com</a>.
+            For any privacy-related questions, email <a className="text-amber hover:underline" href="mailto:contact@barqova.com">contact@barqova.com</a>.
           </p>
         </div>
       </div>

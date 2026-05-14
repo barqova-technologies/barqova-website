@@ -100,7 +100,7 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
 type Gsap = typeof import("gsap").default;
 
 /**
- * Magnetic hover — element drifts toward the cursor while hovered, then
+ * Magnetic hover. Element drifts toward the cursor while hovered, then
  * springs back when the cursor leaves. Returns a cleanup fn.
  */
 export function magnetize(
@@ -224,7 +224,7 @@ export function splitChars(el: HTMLElement): HTMLSpanElement[] {
 }
 
 /**
- * Smooth-scrub "scroll velocity" tracker — adds `--scroll-vel` (between -1 and 1)
+ * Smooth-scrub "scroll velocity" tracker. Adds `--scroll-vel` (between -1 and 1)
  * as a CSS variable on the document root. Useful for skewing or stretching
  * elements with the user's scroll speed.
  */

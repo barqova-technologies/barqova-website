@@ -1,18 +1,15 @@
-// Inline script that runs before paint to set the theme class on <html>.
-// Mirrors the user's system preference and updates live without flashing.
+// Inline pre-paint script. Default = light. localStorage('barqova-theme') wins.
 const themeScript = `
 (function() {
   try {
-    var mql = window.matchMedia('(prefers-color-scheme: dark)');
-    var apply = function(isDark) {
-      var root = document.documentElement;
-      root.classList.toggle('dark', isDark);
-      root.classList.toggle('light', !isDark);
-      root.style.colorScheme = isDark ? 'dark' : 'light';
-    };
-    apply(mql.matches);
-    if (mql.addEventListener) mql.addEventListener('change', function(e){ apply(e.matches); });
-    else if (mql.addListener) mql.addListener(function(e){ apply(e.matches); });
+    var key = 'barqova-theme';
+    var stored = null;
+    try { stored = localStorage.getItem(key); } catch (_) {}
+    var theme = (stored === 'dark' || stored === 'light') ? stored : 'light';
+    var root = document.documentElement;
+    root.classList.toggle('dark', theme === 'dark');
+    root.classList.toggle('light', theme === 'light');
+    root.style.colorScheme = theme;
   } catch (_) {}
 })();
 `;

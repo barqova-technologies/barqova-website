@@ -32,7 +32,7 @@ export default function TermsPage() {
             Any project engagement with Barqova Technologies is governed by a separate signed agreement. The information on this site is provided for general guidance only.
           </p>
           <p>
-            Questions: <a className="text-[#D5AD36] hover:underline" href="mailto:contact@barqova.com">contact@barqova.com</a>.
+            Questions: <a className="text-amber hover:underline" href="mailto:contact@barqova.com">contact@barqova.com</a>.
           </p>
         </div>
       </div>

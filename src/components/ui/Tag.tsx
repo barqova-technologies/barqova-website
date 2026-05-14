@@ -8,7 +8,7 @@ type TagProps = {
 };
 
 const styles: Record<NonNullable<TagProps["variant"]>, string> = {
-  gold: "bg-[#D5AD36]/10 text-[#D5AD36] border border-[#D5AD36]/20",
+  gold: "bg-amber-soft text-amber border border-amber-soft",
   outline: "border border-app text-muted-app",
   dark: "bg-white/5 text-white/80 border border-white/10",
 };

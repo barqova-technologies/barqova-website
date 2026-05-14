@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Capabilities", href: "/services" },
+  { label: "Fit Finder", href: "/fit-finder" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
   { label: "About", href: "/about" },
 ] as const;
 
@@ -43,38 +46,38 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-[var(--bg)]/85 backdrop-blur-md border-b border-[#D5AD36]/30"
+            ? "bg-[var(--bg-hero)]/85 backdrop-blur-md border-b border-hero"
             : "bg-transparent",
         )}
       >
         <nav
           aria-label="Primary"
-          className="container-page flex h-16 items-center justify-between"
+          className="container-page flex h-20 lg:h-24 items-center justify-between"
         >
           <Link
             href="/"
-            aria-label="Barqova Technologies — Home"
+            aria-label="Barqova Technologies, Home"
             className="flex items-center gap-2"
           >
             <Image
               src="/logo-light.png"
               alt="Barqova Technologies"
-              width={180}
-              height={180}
+              width={260}
+              height={260}
               priority
-              className="block w-auto  h-20 dark:hidden"
+              className="block w-auto h-24 lg:h-28 dark:hidden"
             />
             <Image
               src="/logo-dark.png"
               alt="Barqova Technologies"
-              width={180}
-              height={180}
+              width={260}
+              height={260}
               priority
-              className="hidden w-auto  h-20 dark:block"
+              className="hidden w-auto h-24 lg:h-28 dark:block"
             />
           </Link>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-7 xl:gap-9">
             {NAV_LINKS.map((link) => {
               const active =
                 link.href === "/"
@@ -85,10 +88,8 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-sm font-medium transition-colors",
-                      active
-                        ? "text-[#D5AD36]"
-                        : "text-app hover:text-[#D5AD36]",
+                      "text-[15px] xl:text-base font-medium tracking-[-0.005em] transition-colors",
+                      active ? "text-amber" : "text-app hover:text-amber",
                     )}
                   >
                     {link.label}
@@ -99,23 +100,29 @@ export function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#D5AD36] px-5 py-2.5 text-sm font-semibold text-[#0F172A] transition-all hover:bg-[#E7C358] hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(213, 173, 54,0.25)]"
+                className="inline-flex items-center justify-center rounded-[10px] bg-amber px-5 py-2.5 xl:px-6 xl:py-3 text-[15px] xl:text-base font-semibold text-[#0A0A0A] shadow-amber-glow transition hover:bg-[var(--amber-hover)] hover:scale-[1.01]"
               >
                 Let&rsquo;s Talk
               </Link>
             </li>
+            <li>
+              <ThemeToggle />
+            </li>
           </ul>
 
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full text-app hover:bg-[var(--surface)]"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[10px] text-app hover:bg-surface"
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -125,11 +132,11 @@ export function Navbar() {
         aria-modal="true"
         aria-hidden={!open}
         className={cn(
-          "fixed inset-0 z-40 md:hidden bg-[#0F172A] transition-opacity duration-300",
+          "fixed inset-0 z-40 lg:hidden bg-app transition-opacity duration-300",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
       >
-        <div className="flex h-full flex-col items-center justify-center gap-8 p-8">
+        <div className="flex h-full flex-col items-center justify-center gap-6 p-8">
           {NAV_LINKS.map((link) => {
             const active =
               link.href === "/"
@@ -140,8 +147,8 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-3xl font-semibold transition-colors",
-                  active ? "text-[#D5AD36]" : "text-white hover:text-[#D5AD36]",
+                  "text-2xl sm:text-3xl font-semibold tracking-tight transition-colors",
+                  active ? "text-amber" : "text-app hover:text-amber",
                 )}
               >
                 {link.label}
@@ -150,7 +157,7 @@ export function Navbar() {
           })}
           <Link
             href="/contact"
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-[#D5AD36] px-8 py-4 text-base font-semibold text-[#0F172A] hover:bg-[#E7C358]"
+            className="mt-4 inline-flex items-center justify-center rounded-[10px] bg-amber px-8 py-4 text-base font-semibold text-[#0A0A0A] hover:bg-[var(--amber-hover)]"
           >
             Let&rsquo;s Talk
           </Link>

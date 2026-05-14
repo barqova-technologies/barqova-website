@@ -126,26 +126,38 @@ const SERVICE_OFFERINGS: Array<{ name: string; description: string; serviceType:
   {
     name: "Custom Software Development",
     description:
-      "Bespoke software built around your business — dashboards, SaaS platforms, internal tools and workflow automation.",
+      "Bespoke software built around how your team works. Internal tools, workflow automation, the unglamorous stack that quietly runs a business.",
     serviceType: "Custom software development",
   },
   {
-    name: "Web App Development",
+    name: "Web Applications",
     description:
-      "Fast, modern web applications built with React and Next.js — SEO-friendly, scalable, production-grade.",
+      "Dashboards, customer portals and internal tools used by hundreds of people every day.",
     serviceType: "Web application development",
   },
   {
-    name: "Mobile App Development",
+    name: "AI Integration Applications",
     description:
-      "Cross-platform mobile apps for iOS and Android using React Native, plus native Android with Kotlin Jetpack Compose.",
+      "Real workflows powered by language models. Drafting, routing, internal copilots that actually save time.",
+    serviceType: "AI integration",
+  },
+  {
+    name: "App Development",
+    description:
+      "Mobile apps for iOS and Android from one clean codebase. Fast on slower phones, easy to maintain after launch.",
     serviceType: "Mobile application development",
   },
   {
-    name: "Hire Our Team",
+    name: "SaaS Development",
     description:
-      "Dedicated developers working on your project sprint-by-sprint — full-stack delivery without the full-time hire.",
-    serviceType: "Software development staffing",
+      "End-to-end SaaS. Multi-tenancy, billing, access control and infra so you can focus on the product.",
+    serviceType: "SaaS product development",
+  },
+  {
+    name: "Portfolio Sites",
+    description:
+      "Personal and creative portfolios with real craft. Fast galleries, clean type, considered motion.",
+    serviceType: "Portfolio website development",
   },
 ];
 

@@ -3,53 +3,133 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-dark: #0F172A;
-  --color-gold: #D5AD36;
-  --color-gold-light: #E7C358;
-  --color-gold-dark: #B0892A;
-  --color-offwhite: #F8FAFC;
-  --color-graytext: #64748B;
-  --color-borderline: #E2E8F0;
+  /* Brand amber — kept at #D5AD36, mapped into spec slots */
+  --color-amber: #D5AD36;
+  --color-amber-hover: #E7C358;
+  --color-amber-pressed: #B0892A;
+  --color-amber-text-on-light: #B0892A;
 
-  --font-display: var(--font-jakarta);
+  /* Status */
+  --color-success: #4AC267;
+  --color-success-light: #1F8030;
+  --color-warning: #D5AD36;
+  --color-error: #FF6B6B;
+  --color-error-light: #C53030;
+
+  --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
 
   --breakpoint-xs: 22rem;
 }
 
-/* Brand colors stay constant across themes; only surfaces shift. */
+/* ===== Light (default) ===== */
 :root {
-  --bg: #FFFFFF;
-  --fg: #0F172A;
-  --surface: #F8FAFC;
-  --border: #E2E8F0;
-  --muted: #64748B;
-  --gold: #D5AD36;
-  --gold-light: #E7C358;
-  --gold-dark: #B0892A;
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  /* Light hero — soft amber-tinted surface (no dark backgrounds in light mode) */
+  --bg-hero: #FBF6E7;
+  --hero-text: #0A0A0A;
+  --hero-text-muted: rgba(10, 10, 10, 0.66);
+  --hero-text-subtle: rgba(10, 10, 10, 0.44);
+  --hero-border: rgba(10, 10, 10, 0.08);
+  --hero-surface: rgba(255, 255, 255, 0.72);
+
+  --card-fill: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-border-hover: rgba(0, 0, 0, 0.12);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+
+  --text-primary: #0A0A0A;
+  --text-secondary: rgba(10, 10, 10, 0.72);
+  --text-tertiary: rgba(10, 10, 10, 0.52);
+  --text-disabled: rgba(10, 10, 10, 0.32);
+
+  --divider: rgba(0, 0, 0, 0.06);
+
+  --amber: #D5AD36;
+  --amber-text: #B0892A;
+  --amber-hover: #E7C358;
+  --amber-pressed: #B0892A;
+  --amber-glow: 0 1px 8px rgba(213, 173, 54, 0.28);
+  --amber-soft-bg: rgba(213, 173, 54, 0.10);
+  --amber-soft-border: rgba(213, 173, 54, 0.32);
+
+  --status-success-bg: rgba(46, 160, 67, 0.10);
+  --status-success-text: #1F8030;
+  --status-warning-bg: rgba(213, 173, 54, 0.12);
+  --status-warning-text: #B0892A;
+  --status-error-bg: rgba(248, 81, 73, 0.10);
+  --status-error-text: #C53030;
+  --status-neutral-bg: rgba(0, 0, 0, 0.05);
+  --status-neutral-text: rgba(0, 0, 0, 0.65);
+
+  /* Backwards-compat aliases used by existing components */
+  --bg: var(--bg-primary);
+  --fg: var(--text-primary);
+  --surface: var(--bg-secondary);
+  --border: var(--card-border);
+  --muted: var(--text-secondary);
+  --gold: var(--amber);
+  --gold-light: var(--amber-hover);
+  --gold-dark: var(--amber-pressed);
 }
 
+/* ===== Dark ===== */
 .dark {
-  --bg: #0B1220;
-  --fg: #F8FAFC;
-  --surface: #111B2E;
-  --border: #1E293B;
-  --muted: #94A3B8;
-}
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --bg-elevated: #141414;
+  --bg-hero: #0A0A0A;
+  --hero-text: #FFFFFF;
+  --hero-text-muted: rgba(255, 255, 255, 0.72);
+  --hero-text-subtle: rgba(255, 255, 255, 0.46);
+  --hero-border: rgba(255, 255, 255, 0.10);
+  --hero-surface: rgba(255, 255, 255, 0.04);
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --bg: #0B1220;
-    --fg: #F8FAFC;
-    --surface: #111B2E;
-    --border: #1E293B;
-    --muted: #94A3B8;
-  }
+  --card-fill: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(255, 255, 255, 0.14);
+  --card-shadow: 0 4px 24px -12px rgba(0, 0, 0, 0.6);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --text-tertiary: rgba(255, 255, 255, 0.48);
+  --text-disabled: rgba(255, 255, 255, 0.28);
+
+  --divider: rgba(255, 255, 255, 0.06);
+
+  --amber: #D5AD36;
+  --amber-text: #E7C358;
+  --amber-hover: #FFB840;
+  --amber-pressed: #D88E10;
+  --amber-glow: 0 0 24px rgba(213, 173, 54, 0.18), 0 0 1px rgba(213, 173, 54, 0.4);
+  --amber-soft-bg: rgba(213, 173, 54, 0.10);
+  --amber-soft-border: rgba(213, 173, 54, 0.24);
+
+  --status-success-bg: rgba(46, 160, 67, 0.14);
+  --status-success-text: #4AC267;
+  --status-warning-bg: rgba(213, 173, 54, 0.14);
+  --status-warning-text: #E7C358;
+  --status-error-bg: rgba(248, 81, 73, 0.14);
+  --status-error-text: #FF6B6B;
+  --status-neutral-bg: rgba(255, 255, 255, 0.06);
+  --status-neutral-text: rgba(255, 255, 255, 0.72);
+
+  --bg: var(--bg-primary);
+  --fg: var(--text-primary);
+  --surface: var(--bg-secondary);
+  --border: var(--card-border);
+  --muted: var(--text-secondary);
+  --gold: var(--amber);
+  --gold-light: var(--amber-hover);
+  --gold-dark: var(--amber-pressed);
 }
 
 @layer base {
   * {
-    border-color: var(--border);
+    border-color: var(--card-border);
   }
 
   html {
@@ -58,10 +138,10 @@
   }
 
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans), "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-feature-settings: "cv11", "ss01", "ss03", "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -69,35 +149,29 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-    letter-spacing: -0.02em;
+    color: var(--text-primary);
   }
 
+  h1 { letter-spacing: -0.02em; font-weight: 600; }
+  h2 { letter-spacing: -0.015em; font-weight: 600; }
+  h3 { letter-spacing: -0.01em; font-weight: 600; }
+
   ::selection {
-    background: #D5AD36;
-    color: #0F172A;
+    background: var(--amber);
+    color: #0A0A0A;
   }
 
   :focus-visible {
-    outline: 2px solid #D5AD36;
+    outline: 2px solid var(--amber);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Normalize lucide icons — kill the inline-baseline gap and stop them
-     from shrinking inside flex rows. The rendered SVG is centered inside
-     its CSS box rather than sitting on the text baseline. */
   svg.lucide {
     display: inline-block;
     vertical-align: middle;
     flex-shrink: 0;
     line-height: 0;
-  }
-
-  /* Slightly tighter visual margin: lucide paths are inset within the 24x24
-     viewBox, which makes them look smaller than the CSS box. Scaling the
-     stroke up a touch and trimming the optical padding fixes the “icon
-     looks like it has too much margin on either side” problem. */
-  svg.lucide {
     overflow: visible;
   }
 
@@ -115,28 +189,165 @@
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
 
-  .bg-app { background: var(--bg); }
-  .bg-surface { background: var(--surface); }
-  .text-app { color: var(--fg); }
-  .text-muted-app { color: var(--muted); }
-  .border-app { border-color: var(--border); }
+  /* Surfaces */
+  .bg-app { background: var(--bg-primary); }
+  .bg-surface { background: var(--bg-secondary); }
+  .bg-elevated { background: var(--bg-elevated); }
+  .bg-hero { background: var(--bg-hero); }
 
-  .text-gold { color: var(--gold); }
-  .bg-gold { background-color: var(--gold); }
-  .border-gold { border-color: var(--gold); }
+  /* Hero text — adapts per theme */
+  .text-hero { color: var(--hero-text); }
+  .text-hero-muted { color: var(--hero-text-muted); }
+  .text-hero-subtle { color: var(--hero-text-subtle); }
+  .border-hero { border-color: var(--hero-border); }
+  .bg-hero-surface { background: var(--hero-surface); }
 
+  /* Text */
+  .text-app { color: var(--text-primary); }
+  .text-muted-app { color: var(--text-secondary); }
+  .text-tertiary-app { color: var(--text-tertiary); }
+  .text-disabled-app { color: var(--text-disabled); }
+
+  /* Borders & dividers */
+  .border-app { border-color: var(--card-border); }
+  .border-app-hover:hover { border-color: var(--card-border-hover); }
+  .divider-app { background: var(--divider); }
+
+  /* Amber */
+  .text-gold { color: var(--amber-text); }
+  .bg-gold { background-color: var(--amber); }
+  .border-gold { border-color: var(--amber); }
+  .text-amber { color: var(--amber-text); }
+  .bg-amber { background-color: var(--amber); }
+  .border-amber { border-color: var(--amber); }
+  .bg-amber-soft { background-color: var(--amber-soft-bg); }
+  .border-amber-soft { border-color: var(--amber-soft-border); }
+  .shadow-amber-glow { box-shadow: var(--amber-glow); }
+
+  /* Cards */
+  .card-app {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .card-app:hover { border-color: var(--card-border-hover); }
+  .dark .card-app {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .card-compact { padding: 16px; }
+  .card-spacious { padding: 32px; }
+
+  /* Buttons — base sizing */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 40px; padding: 0 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; line-height: 1;
+    transition: background-color 150ms, color 150ms, border-color 150ms, transform 100ms, box-shadow 150ms;
+    cursor: pointer;
+  }
+  .btn-sm { height: 32px; padding: 0 14px; font-size: 13px; }
+  .btn-lg { height: 44px; padding: 0 22px; }
+
+  .btn-primary {
+    background: var(--amber);
+    color: #0A0A0A;
+    box-shadow: var(--amber-glow);
+  }
+  .btn-primary:hover { background: var(--amber-hover); transform: scale(1.01); }
+  .btn-primary:active { background: var(--amber-pressed); transform: scale(0.99); }
+  .btn-primary:disabled { opacity: 0.4; box-shadow: none; cursor: not-allowed; }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .btn-ghost:hover { background: var(--card-fill); border-color: var(--card-border-hover); }
+  .btn-ghost:active { opacity: 0.8; }
+
+  .btn-text {
+    background: transparent;
+    color: var(--amber-text);
+    font-weight: 500;
+    height: auto; padding: 0;
+  }
+  .btn-text:hover { text-decoration: underline; }
+
+  .btn-destructive {
+    background: var(--status-error-bg);
+    color: var(--status-error-text);
+    border: 1px solid rgba(248, 81, 73, 0.24);
+  }
+  .btn-destructive:hover { background: rgba(248, 81, 73, 0.18); }
+
+  .btn-icon { width: 40px; height: 40px; padding: 0; border-radius: 10px; }
+
+  /* Inputs */
+  .input-app {
+    width: 100%; height: 44px;
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .input-app::placeholder { color: var(--text-tertiary); }
+  .input-app:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(213, 173, 54, 0.16);
+  }
+  .input-app:disabled { opacity: 0.5; }
+  .input-app[aria-invalid="true"] { border-color: var(--status-error-text); }
+
+  /* Pills / chips */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 32px; padding: 0 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.01em;
+    background: var(--status-neutral-bg);
+    color: var(--status-neutral-text);
+    border: 1px solid transparent;
+  }
+  .pill-sm { height: 28px; padding: 0 12px; }
+  .pill-lg { height: 36px; padding: 0 16px; }
+  .pill-active {
+    background: var(--amber-soft-bg);
+    color: var(--amber-text);
+    border-color: var(--amber-soft-border);
+  }
+  .pill-success { background: var(--status-success-bg); color: var(--status-success-text); }
+  .pill-warning { background: var(--status-warning-bg); color: var(--status-warning-text); }
+  .pill-error { background: var(--status-error-bg); color: var(--status-error-text); }
+
+  /* Glass morphism (dark only) */
+  .glass {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+  }
+  .dark .glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Container */
   .container-page {
     width: 100%;
     margin-inline: auto;
     padding-inline: 1rem;
     max-width: 96rem;
   }
-
   @media (min-width: 640px)  { .container-page { padding-inline: 1.5rem; } }
   @media (min-width: 1024px) { .container-page { padding-inline: 2.5rem; } }
   @media (min-width: 1536px) { .container-page { padding-inline: 4rem; max-width: 110rem; } }
 
-  /* Wider variant for sections that should bleed almost edge-to-edge */
   .container-wide {
     width: 100%;
     margin-inline: auto;
@@ -147,6 +358,7 @@
   @media (min-width: 1024px) { .container-wide { padding-inline: 2.5rem; } }
   @media (min-width: 1536px) { .container-wide { padding-inline: 3rem; } }
 
+  /* Decorative */
   .grid-bg {
     background-image:
       linear-gradient(to right, rgba(213, 173, 54, 0.08) 1px, transparent 1px),
@@ -185,28 +397,24 @@
     pointer-events: none;
   }
 
-  /* GPU compositing for scroll-driven elements */
   .gpu {
     transform: translateZ(0);
     will-change: transform, opacity;
     backface-visibility: hidden;
   }
 
-  /* Fancy underline for nav links */
   .link-underline {
-    background-image: linear-gradient(to right, var(--gold), var(--gold));
+    background-image: linear-gradient(to right, var(--amber), var(--amber));
     background-size: 0 2px;
     background-repeat: no-repeat;
     background-position: 0 100%;
     transition: background-size 0.35s ease-out;
   }
-
   .link-underline:hover,
   .link-underline[data-active="true"] {
     background-size: 100% 2px;
   }
 
-  /* Marquee — used for tag scrollers */
   @keyframes marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -214,5 +422,107 @@
   .marquee-track {
     animation: marquee 28s linear infinite;
     will-change: transform;
+  }
+
+  /* Numeric / code */
+  .font-num { font-family: var(--font-mono), ui-monospace, "SF Mono", monospace; }
+
+  /* Lightweight entrance reveal — used by Hero etc. so we avoid GSAP cost */
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-reveal {
+    opacity: 0;
+    animation: heroReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reveal { opacity: 1; animation: none; }
+  }
+
+  /* Capability bento tiles — IO reveal via .in-view toggle */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-up.in-view { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-up { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Bento card glow on hover — cheap, GPU only */
+  .bento-card {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .bento-card:hover {
+    border-color: var(--amber-soft-border);
+    transform: translateY(-4px);
+  }
+  .bento-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(213,173,54,0.10), transparent 40%);
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .bento-card:hover::after { opacity: 1; }
+  .dark .bento-card {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Smooth accordion — pure CSS, no JS height calc */
+  details.faq summary { list-style: none; cursor: pointer; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform 0.25s ease; }
+
+  /* Word-strip marquee (CSS-only, no GSAP) */
+  @keyframes wordStrip {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .word-strip { animation: wordStrip 38s linear infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .word-strip { animation: none; }
+  }
+
+  /* Blog post body — minimal prose, no @tailwindcss/typography needed */
+  .post-body p { margin-bottom: 1.25em; color: var(--text-secondary); }
+  .post-body h2 {
+    margin-top: 2.25em; margin-bottom: 0.6em;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+  .post-body h3 {
+    margin-top: 1.75em; margin-bottom: 0.5em;
+    font-size: 1.2rem; font-weight: 600; color: var(--text-primary);
+  }
+  .post-body ul { margin: 1em 0 1.5em; padding-left: 1.5em; list-style: disc; color: var(--text-secondary); }
+  .post-body ol { margin: 1em 0 1.5em; padding-left: 1.5em; list-style: decimal; color: var(--text-secondary); }
+  .post-body li { margin-bottom: 0.4em; }
+  .post-body a { color: var(--amber-text); text-decoration: underline; text-underline-offset: 3px; }
+  .post-body a:hover { color: var(--amber); }
+  .post-body strong { color: var(--text-primary); font-weight: 600; }
+  .post-body em { font-style: italic; }
+  .post-body code {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.9em;
+    background: var(--status-neutral-bg);
+    padding: 0.15em 0.4em; border-radius: 4px;
+  }
+  .post-body blockquote {
+    margin: 1.5em 0;
+    padding: 0.5em 1.25em;
+    border-left: 3px solid var(--amber);
+    color: var(--text-primary);
+    font-style: italic;
   }
 }

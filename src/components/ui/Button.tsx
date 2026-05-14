@@ -6,15 +6,15 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 ease-out min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D5AD36] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] transition-all duration-200 ease-out min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--amber)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-[#D5AD36] text-[#0F172A] hover:bg-[#E7C358] hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_14px_rgba(213,173,54,0.25)]",
+    "bg-amber text-[#0A0A0A] hover:bg-[var(--amber-hover)] hover:scale-[1.01] active:scale-[0.99] shadow-amber-glow",
   secondary:
-    "border border-white/30 text-white hover:border-[#D5AD36] hover:text-[#D5AD36] bg-transparent",
+    "border border-white/30 text-white hover:border-amber hover:text-amber bg-transparent",
   ghost:
-    "border border-app text-app hover:border-[#D5AD36] hover:text-[#D5AD36] bg-transparent",
+    "border border-app text-app hover:border-amber hover:text-amber bg-transparent",
 };
 
 const sizes: Record<Size, string> = {

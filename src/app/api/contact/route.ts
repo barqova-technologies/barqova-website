@@ -66,14 +66,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Message is too long." }, { status: 400 });
   }
 
-  const subject = `New enquiry from ${name} — ${service}`;
+  const subject = `New enquiry from ${name} (${service})`;
 
   const html = `
     <div style="font-family:Inter,system-ui,sans-serif;color:#0F172A;max-width:600px;margin:0 auto">
       <h2 style="color:#D5AD36;margin:0 0 16px">New enquiry from the website</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p><strong>Phone:</strong> ${escapeHtml(phone || "—")}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
       <p><strong>Service:</strong> ${escapeHtml(service)}</p>
       <p style="margin-top:16px"><strong>Message:</strong></p>
       <p style="white-space:pre-wrap;background:#F8FAFC;padding:12px;border-radius:8px;border:1px solid #E2E8F0">${escapeHtml(message)}</p>
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     ``,
     `Name: ${name}`,
     `Email: ${email}`,
-    `Phone: ${phone || "—"}`,
+    `Phone: ${phone || "Not provided"}`,
     `Service: ${service}`,
     ``,
     `Message:`,

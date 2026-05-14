@@ -1,12 +1,3 @@
-export type Project = {
-  slug: string;
-  name: string;
-  category: "Web App" | "Mobile App" | "SaaS";
-  description: string;
-  tech: string[];
-  status?: string;
-};
-
 export type ServiceCardData = {
   title: string;
   description: string;
@@ -22,10 +13,22 @@ export type TeamMember = {
   linkedin: string;
 };
 
-export type ProcessStep = {
-  number: string;
+export type BlogPost = {
+  slug: string;
   title: string;
-  description: string;
-  warm: string;
-  icon: string;
+  excerpt: string;
+  category: string;
+  readMinutes: number;
+  publishedAt: string;
+  author: string;
+  body: string;
+};
+
+export type JobOpening = {
+  slug: string;
+  title: string;
+  team: string;
+  location: string;
+  type: "Full-time" | "Part-time" | "Contract" | "Internship";
+  summary: string;
 };

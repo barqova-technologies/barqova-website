@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -14,23 +14,22 @@ import {
 } from "@/components/seo/JsonLd";
 import { buildMetadata, siteConfig } from "@/lib/metadata";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
-});
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
+    { media: "(prefers-color-scheme: light)", color: "#FAFAFA" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -40,9 +39,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   ...buildMetadata({
-    title: "Barqova Technologies — Web & Mobile App Development Company",
+    title: "Barqova Technologies. Custom Software, Web Apps, AI & SaaS",
     description:
-      "We build fast web apps and mobile apps for startups and businesses across India. React, Next.js, Node.js, React Native. Get in touch.",
+      "Barqova Technologies builds custom software, web apps, mobile apps, AI integrations and SaaS for founders and growing businesses. Honest timelines.",
     path: "/",
   }),
   applicationName: siteConfig.name,
@@ -70,7 +69,7 @@ export default function RootLayout({
       lang="en-IN"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${jakarta.variable} ${inter.variable}`}
+      className={`${inter.variable} ${jetbrains.variable}`}
     >
       <head>
         <ThemeScript />
@@ -81,12 +80,12 @@ export default function RootLayout({
       >
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-[#D5AD36] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#0F172A]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-amber focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#0A0A0A]"
         >
           Skip to content
         </a>
         <Navbar />
-        <main id="main" className="flex-1 pt-16">
+        <main id="main" className="flex-1 pt-20 lg:pt-24">
           {children}
         </main>
         <Footer />

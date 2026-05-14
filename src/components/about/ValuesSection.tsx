@@ -8,7 +8,7 @@ const VALUES = [
   {
     Icon: Zap,
     title: "Ship Fast",
-    body: "We believe in delivering working software quickly. Speed matters — especially for startups.",
+    body: "We believe in delivering working software quickly. Speed matters, especially for startups.",
   },
   {
     Icon: Shield,
@@ -75,7 +75,7 @@ export function ValuesSection() {
     <section ref={scope} className="bg-app py-24 sm:py-28">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-block rounded-full bg-[#D5AD36]/10 px-3 py-1 text-xs font-medium tracking-widest text-[#D5AD36] uppercase">
+          <span className="inline-block rounded-full bg-amber-soft border border-amber-soft px-3 py-1 text-xs font-medium tracking-widest text-amber uppercase">
             Values
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-balance text-app">
@@ -92,7 +92,7 @@ export function ValuesSection() {
             >
               <div
                 data-value-icon
-                className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#D5AD36]/15 to-[#E7C358]/5 text-[#D5AD36] ring-1 ring-[#D5AD36]/20 transition-transform group-hover:rotate-12 group-hover:scale-110"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-soft text-amber ring-1 ring-amber-soft transition-transform group-hover:rotate-12 group-hover:scale-110"
               >
                 <v.Icon className="h-6 w-6" />
               </div>

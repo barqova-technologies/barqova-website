@@ -80,7 +80,7 @@ export function TeamSection() {
     <section ref={scope} className="bg-surface py-24 sm:py-28">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-block rounded-full bg-[#D5AD36]/10 px-3 py-1 text-xs font-medium tracking-widest text-[#D5AD36] uppercase">
+          <span className="inline-block rounded-full bg-amber-soft border border-amber-soft px-3 py-1 text-xs font-medium tracking-widest text-amber uppercase">
             Team
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-balance text-app">
@@ -99,7 +99,7 @@ export function TeamSection() {
             <article
               key={m.name}
               data-team-card
-              className="group flex flex-col items-center text-center rounded-2xl border border-app bg-[var(--bg)] p-7 shadow-[0_4px_24px_-12px_rgba(15,23,42,0.12)] transition-shadow duration-300 hover:shadow-[0_24px_50px_-25px_rgba(213,173,54,0.45)] gpu"
+              className="group flex flex-col items-center text-center rounded-2xl border border-app bg-elevated p-7 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[0_24px_50px_-25px_rgba(213,173,54,0.45)] gpu"
             >
               <div className="relative">
                 <div
@@ -108,13 +108,13 @@ export function TeamSection() {
                 />
                 <div
                   data-team-avatar
-                  className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-2xl font-bold text-[#E7C358] shadow-[0_8px_24px_-8px_rgba(213,173,54,0.6)] ring-2 ring-[#D5AD36]/30"
+                  className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#0A0A0A] to-[#141414] text-2xl font-bold text-amber shadow-amber-glow ring-2 ring-amber-soft"
                 >
                   {m.initials}
                 </div>
               </div>
               <h3 className="mt-5 text-lg font-semibold text-app">{m.name}</h3>
-              <p className="mt-1 text-xs font-semibold tracking-widest text-[#D5AD36] uppercase">
+              <p className="mt-1 text-xs font-semibold tracking-widest text-amber uppercase">
                 {m.role}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-app">
@@ -122,8 +122,10 @@ export function TeamSection() {
               </p>
               <a
                 href={m.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={`${m.name} on LinkedIn`}
-                className="mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-app text-muted-app transition hover:border-[#D5AD36] hover:bg-[#D5AD36]/10 hover:text-[#D5AD36]"
+                className="mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-app text-muted-app transition hover:border-amber hover:bg-amber-soft hover:text-amber"
               >
                 <LinkedinIcon className="h-4 w-4" />
               </a>

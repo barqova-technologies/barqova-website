@@ -1,13 +1,14 @@
-import { readFileSync } from "fs";
-import { join } from "path";
+import { ogContentType, ogSize, renderOg } from "@/lib/og";
 
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/jpeg";
-export const alt = "Barqova Technologies — Powered by Lightning, Built for Scale";
+export const runtime = "edge";
+export const size = ogSize;
+export const contentType = ogContentType;
+export const alt = "Barqova Technologies. Powered by Lightning, Built for Scale";
 
 export default function OGImage() {
-  const file = readFileSync(join(process.cwd(), "public", "og-image.jpg"));
-  return new Response(file, {
-    headers: { "Content-Type": "image/jpeg" },
+  return renderOg({
+    eyebrow: "Barqova Technologies",
+    title: "Software that earns its keep.",
+    subtitle: "Custom software, web apps, mobile, AI integrations and SaaS.",
   });
 }
