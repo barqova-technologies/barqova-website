@@ -19,7 +19,7 @@ const FAQ = [
   },
   {
     q: "Where are you based?",
-    a: "Lucknow, India. Working with founders and teams across the world.",
+    a: "We&rsquo;re a remote-first team across India. We work with founders and teams worldwide. Calls happen on Google Meet, Cal, WhatsApp, or whatever fits your timezone.",
   },
 ];
 

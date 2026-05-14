@@ -22,8 +22,6 @@ export function OrganizationJsonLd() {
     ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lucknow",
-      addressRegion: "Uttar Pradesh",
       addressCountry: "IN",
     },
     contactPoint: [
@@ -32,7 +30,7 @@ export function OrganizationJsonLd() {
         telephone: siteConfig.phone,
         email: siteConfig.email,
         contactType: "sales",
-        areaServed: "IN",
+        areaServed: "Worldwide",
         availableLanguage: ["English", "Hindi"],
       },
     ],
@@ -47,11 +45,11 @@ export function OrganizationJsonLd() {
   );
 }
 
-export function LocalBusinessJsonLd() {
+export function ProfessionalServiceJsonLd() {
   const data = {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": `${siteConfig.url}#localbusiness`,
+    "@type": "ProfessionalService",
+    "@id": `${siteConfig.url}#service`,
     name: siteConfig.name,
     url: siteConfig.url,
     image: `${siteConfig.url}/android-chrome-512x512.png`,
@@ -60,11 +58,9 @@ export function LocalBusinessJsonLd() {
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lucknow",
-      addressRegion: "Uttar Pradesh",
       addressCountry: "IN",
     },
-    areaServed: { "@type": "Country", name: "India" },
+    areaServed: { "@type": "Place", name: "Worldwide" },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

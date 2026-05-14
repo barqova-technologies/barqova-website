@@ -7,9 +7,10 @@ import { ValuesSection } from "@/components/about/ValuesSection";
 import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Barqova Technologies. Founder-Led Software Company in India",
+  title:
+    "About Barqova Technologies. Founder-Led Remote Software Company",
   description:
-    "Barqova Technologies is a founder-led software company building custom software, web apps, mobile apps, AI integrations and SaaS for businesses.",
+    "Barqova Technologies is a founder-led remote software company building custom software, web apps, mobile apps, AI integrations and SaaS worldwide.",
   path: "/about",
 });
 

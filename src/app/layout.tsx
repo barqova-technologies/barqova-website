@@ -9,7 +9,7 @@ import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import {
   OrganizationJsonLd,
-  LocalBusinessJsonLd,
+  ProfessionalServiceJsonLd,
   WebsiteJsonLd,
 } from "@/components/seo/JsonLd";
 import { buildMetadata, siteConfig } from "@/lib/metadata";
@@ -91,7 +91,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <OrganizationJsonLd />
-        <LocalBusinessJsonLd />
+        <ProfessionalServiceJsonLd />
         <WebsiteJsonLd />
       </body>
       <GoogleAnalytics gaId="G-D47VZMZV5P" />

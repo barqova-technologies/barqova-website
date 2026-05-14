@@ -18,9 +18,10 @@ export const siteConfig = {
     "AI integration services",
     "SaaS development company",
     "portfolio website design",
-    "software development company India",
-    "software company Lucknow",
+    "remote software development team",
+    "distributed software company India",
     "product development for startups",
+    "hire remote development team",
   ],
   links: {
     linkedin: "https://www.linkedin.com/company/barqova",
