@@ -7,9 +7,8 @@ export const siteConfig = {
   phone: "+918052911911",
   phoneDisplay: "+91 8052 911 911",
   url: "https://barqova.com",
-  ogImage: "https://barqova.com/og-image.jpg",
   description:
-    "Barqova Technologies builds custom software, web apps, mobile apps, AI integrations and SaaS for founders and growing businesses. Honest timelines.",
+    "Barqova Technologies is a remote-first software company building custom software, web apps, mobile apps, AI integrations and SaaS for founders worldwide.",
   keywords: [
     "Barqova Technologies",
     "custom software development company",
@@ -35,14 +34,12 @@ type PageMetaInput = {
   title: string;
   description: string;
   path?: string;
-  image?: string;
 };
 
 export function buildMetadata({
   title,
   description,
   path = "/",
-  image = siteConfig.ogImage,
 }: PageMetaInput): Metadata {
   const url = `${siteConfig.url}${path}`;
   return {
@@ -56,13 +53,11 @@ export function buildMetadata({
       siteName: siteConfig.name,
       type: "website",
       locale: "en_IN",
-      images: [{ url: image, width: 1200, height: 630, alt: siteConfig.name }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
     },
     robots: {
       index: true,

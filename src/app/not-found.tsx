@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Lost the trail | Barqova Technologies",
   description:
-    "That page isn't here. Probably moved, renamed, or never existed. Try one of the routes below.",
+    "Page not found on barqova.com. Try the home page, capabilities, blog or contact Barqova Technologies directly.",
   robots: { index: false, follow: false },
 };
 

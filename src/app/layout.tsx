@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: "Barqova Technologies. Custom Software, Web Apps, AI & SaaS",
     description:
-      "Barqova Technologies builds custom software, web apps, mobile apps, AI integrations and SaaS for founders and growing businesses. Honest timelines.",
+      "Barqova Technologies is a remote-first software company building custom software, web apps, mobile apps, AI integrations and SaaS for founders worldwide.",
     path: "/",
   }),
   applicationName: siteConfig.name,

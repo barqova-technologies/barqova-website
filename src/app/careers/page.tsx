@@ -9,7 +9,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "Careers at Barqova Technologies. Build Software People Actually Use",
   description:
-    "Careers at Barqova Technologies. Build custom software, AI workflows, web and mobile apps used by real businesses. We hire habits, not titles.",
+    "Remote engineering and design roles at Barqova Technologies. Work on custom software, AI workflows, SaaS and mobile apps for founders worldwide.",
   path: "/careers",
 });
 

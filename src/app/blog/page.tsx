@@ -8,7 +8,7 @@ import { formatDate, getPostsByDate } from "@/lib/posts";
 export const metadata: Metadata = buildMetadata({
   title: "Field Notes. Custom Software & AI Build Logs | Barqova Technologies",
   description:
-    "Field notes from Barqova Technologies on building custom software, AI integrations, web and mobile apps. Short reads on shipping things that last.",
+    "Articles and field notes by Barqova Technologies on custom software development, AI integration patterns, SaaS architecture and shipping real products.",
   path: "/blog",
 });
 

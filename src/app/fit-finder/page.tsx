@@ -7,7 +7,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "Fit Finder. Pick the Right Capability in 60 Seconds | Barqova Technologies",
   description:
-    "Find which Barqova Technologies capability fits your project in 60 seconds. Four questions, one clear pick. No email, no sales call required.",
+    "Free 60-second project quiz. Answer four questions and Barqova Technologies recommends the right capability for your software, AI or SaaS project.",
   path: "/fit-finder",
 });
 

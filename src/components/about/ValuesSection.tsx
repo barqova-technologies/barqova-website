@@ -1,10 +1,15 @@
 "use client";
 
-import { useRef } from "react";
-import { Zap, Shield, Eye } from "lucide-react";
-import { tilt3d, useScrollAnimation } from "@/lib/gsap";
+import { useEffect, useRef } from "react";
+import { Zap, Shield, Eye, type LucideIcon } from "lucide-react";
 
-const VALUES = [
+type Value = {
+  Icon: LucideIcon;
+  title: string;
+  body: string;
+};
+
+const VALUES: Value[] = [
   {
     Icon: Zap,
     title: "Ship Fast",
@@ -23,80 +28,57 @@ const VALUES = [
 ];
 
 export function ValuesSection() {
-  const scope = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
-  useScrollAnimation(({ gsap, scope, isMobile }) => {
-    const cleanups: Array<() => void> = [];
-
-    const cards = gsap.utils.toArray<HTMLElement>("[data-value]");
-
-    gsap.set(cards, {
-      opacity: 0,
-      y: 60,
-      rotateY: -25,
-      scale: 0.9,
-    });
-
-    gsap.to(cards, {
-      opacity: 1,
-      y: 0,
-      rotateY: 0,
-      scale: 1,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: scope,
-        start: "top 80%",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    gsap.from("[data-value-icon]", {
-      scale: 0,
-      rotate: 270,
-      duration: 0.9,
-      ease: "back.out(2)",
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: scope,
-        start: "top 75%",
-      },
-    });
-
-    if (!isMobile) {
-      cards.forEach((c) => cleanups.push(tilt3d(c, gsap, { max: 7 })));
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const els = Array.from(root.querySelectorAll<HTMLElement>(".reveal-up"));
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((e) => e.classList.add("in-view"));
+      return;
     }
-
-    return () => cleanups.forEach((fn) => fn());
-  }, scope);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            const i = els.indexOf(el);
+            setTimeout(() => el.classList.add("in-view"), i * 90);
+            io.unobserve(el);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section ref={scope} className="bg-app py-24 sm:py-28">
+    <section ref={ref} className="bg-app py-24 sm:py-28">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-block rounded-full bg-amber-soft border border-amber-soft px-3 py-1 text-xs font-medium tracking-widest text-amber uppercase">
             Values
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-balance text-app">
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] tracking-[-0.02em] text-balance text-app">
             What we believe in.
           </h2>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3" style={{ perspective: "1200px" }}>
+        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
           {VALUES.map((v) => (
             <div
               key={v.title}
-              data-value
-              className="group rounded-2xl border border-app bg-surface p-7 transition-shadow duration-300 hover:shadow-[0_24px_50px_-25px_rgba(213,173,54,0.45)] gpu"
+              className="reveal-up group rounded-2xl border border-app bg-surface p-7 transition hover:border-amber-soft hover:shadow-[0_24px_50px_-25px_rgba(213,173,54,0.45)]"
             >
-              <div
-                data-value-icon
-                className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-soft text-amber ring-1 ring-amber-soft transition-transform group-hover:rotate-12 group-hover:scale-110"
-              >
-                <v.Icon className="h-6 w-6" />
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-soft text-amber ring-1 ring-amber-soft transition-transform group-hover:rotate-6 group-hover:scale-110">
+                <v.Icon className="h-6 w-6" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-app">{v.title}</h3>
+              <h3 className="mt-5 text-lg font-semibold tracking-tight text-app">
+                {v.title}
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-app">
                 {v.body}
               </p>

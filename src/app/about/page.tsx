@@ -10,7 +10,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "About Barqova Technologies. Founder-Led Remote Software Company",
   description:
-    "Barqova Technologies is a founder-led remote software company building custom software, web apps, mobile apps, AI integrations and SaaS worldwide.",
+    "Meet Barqova Technologies: a founder-led, remote-first software company started by Sahil Muhib and Mohd Atif Khan. Sharp brief, honest timelines.",
   path: "/about",
 });
 

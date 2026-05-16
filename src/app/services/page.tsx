@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "Capabilities. Custom Software, Web Apps, Mobile, AI & SaaS | Barqova Technologies",
   description:
-    "Custom software, web apps, mobile apps, AI integrations, SaaS and portfolio sites by Barqova Technologies. Outcome-led builds, shipped on time.",
+    "Six capabilities offered by Barqova Technologies: custom software, web app development, mobile app development, AI integration, SaaS and portfolio sites.",
   path: "/services",
 });
 

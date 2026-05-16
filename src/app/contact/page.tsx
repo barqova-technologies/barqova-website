@@ -11,7 +11,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "Contact Barqova Technologies. Custom Software, Apps & AI Projects",
   description:
-    "Contact Barqova Technologies for custom software, web apps, mobile apps, AI or SaaS projects. Book a 15-minute call. Reply within 24 hours.",
+    "Get in touch with Barqova Technologies. Book a free 15-minute project call, email contact@barqova.com, or WhatsApp our founders to start a project.",
   path: "/contact",
 });
 
