@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { BreadcrumbsJsonLd } from "@/components/seo/JsonLd";
-import { formatDate, getPostsByDate } from "@/lib/posts";
+import { BlogList } from "@/components/blog/BlogList";
+import { formatDate, getAllCategories, getPostsByDate } from "@/lib/posts";
 
 export const metadata: Metadata = buildMetadata({
   title: "Field Notes. Custom Software & AI Build Logs | Barqova Technologies",
@@ -16,6 +17,7 @@ export default function BlogPage() {
   const posts = getPostsByDate();
   const featured = posts[0];
   const rest = posts.slice(1);
+  const categories = getAllCategories();
 
   return (
     <>
@@ -81,50 +83,20 @@ export default function BlogPage() {
         </section>
       ) : null}
 
-      {/* Grid */}
+      {/* List with filters */}
       <section className="bg-app py-16 sm:py-20">
         <div className="container-page">
-          {rest.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {rest.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/blog/${p.slug}`}
-                  className="group flex flex-col rounded-2xl border border-app bg-elevated p-7 transition hover:border-amber-soft"
-                >
-                  <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-amber">
-                    <span>{p.category}</span>
-                    <span className="h-1 w-1 rounded-full bg-amber/40" />
-                    <span className="text-muted-app">
-                      {formatDate(p.publishedAt)}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-xl font-semibold tracking-tight text-app group-hover:text-amber">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-app">
-                    {p.excerpt}
-                  </p>
-                  <div className="mt-6 flex items-center justify-between text-xs text-muted-app">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="h-3.5 w-3.5" />
-                      {p.readMinutes} min read
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-amber">
-                      Read
-                      <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="mx-auto max-w-2xl rounded-2xl border border-app bg-elevated p-8 text-center">
-              <p className="text-base text-muted-app">
-                More posts coming soon. We write them in between projects.
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-app">
+                All field notes
+              </h2>
+              <p className="text-sm text-muted-app">
+                {posts.length} posts
               </p>
             </div>
-          )}
+            <BlogList posts={posts} categories={categories} />
+          </div>
         </div>
       </section>
     </>
